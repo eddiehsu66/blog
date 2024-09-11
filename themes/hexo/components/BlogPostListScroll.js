@@ -34,29 +34,29 @@ const BlogPostListScroll = ({
     if (!hasMore) return
     updatePage(page + 1)
   }
+  // 去除监听滚动，改为响应式
+  // // 监听滚动自动分页加载
+  // const scrollTrigger = () => {
+  //   requestAnimationFrame(() => {
+  //     const scrollS = window.scrollY + window.outerHeight
+  //     const clientHeight = targetRef
+  //       ? targetRef.current
+  //         ? targetRef.current.clientHeight
+  //         : 0
+  //       : 0
+  //     if (scrollS > clientHeight + 100) {
+  //       handleGetMore()
+  //     }
+  //   })
+  // }
 
-  // 监听滚动自动分页加载
-  const scrollTrigger = () => {
-    requestAnimationFrame(() => {
-      const scrollS = window.scrollY + window.outerHeight
-      const clientHeight = targetRef
-        ? targetRef.current
-          ? targetRef.current.clientHeight
-          : 0
-        : 0
-      if (scrollS > clientHeight + 100) {
-        handleGetMore()
-      }
-    })
-  }
-
-  // 监听滚动
-  useEffect(() => {
-    window.addEventListener('scroll', scrollTrigger)
-    return () => {
-      window.removeEventListener('scroll', scrollTrigger)
-    }
-  })
+  // // 监听滚动
+  // useEffect(() => {
+  //   window.addEventListener('scroll', scrollTrigger)
+  //   return () => {
+  //     window.removeEventListener('scroll', scrollTrigger)
+  //   }
+  // })
 
   const targetRef = useRef(null)
   const { locale } = useGlobal()
@@ -78,12 +78,14 @@ const BlogPostListScroll = ({
           ))}
         </div>
 
-        <div>
+        <div className = 'space-y-6 px-2'>
           <div
             onClick={() => {
               handleGetMore()
             }}
-            className='w-full my-4 py-4 text-center cursor-pointer rounded-xl dark:text-gray-200'>
+            className={`w-full my-4 py-4 text-center cursor-pointer rounded-xl font-semibold 
+              ${(hasMore ? 'bg-white text-black dark:text-white dark:bg-hexo-black-gray' : 'bg-gray-300 text-gray-700 cursor-not-allowed')}`}
+>
             {' '}
             {hasMore ? locale.COMMON.MORE : `${locale.COMMON.NO_MORE}`}{' '}
           </div>
