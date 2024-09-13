@@ -78,13 +78,13 @@ const BlogPostListScroll = ({
           ))}
         </div>
 
-        <div className = 'space-y-6 px-2'>
+        <div className = 'space-y-6 px-2 mt-6'>
           <div
             onClick={() => {
               handleGetMore()
             }}
             className={`w-full my-4 py-4 text-center cursor-pointer rounded-xl font-semibold 
-              ${(hasMore ? 'bg-white text-black dark:text-white dark:bg-hexo-black-gray' : 'bg-gray-300 text-gray-700 cursor-not-allowed')}`}
+              ${(hasMore ? 'bg-white text-black dark:text-white dark:bg-hexo-black-gray' : 'bg-gray-300 text-gray-700 dark:text-white dark:bg-hexo-black-gray cursor-not-allowed')}`}
 >
             {' '}
             {hasMore ? locale.COMMON.MORE : `${locale.COMMON.NO_MORE}`}{' '}

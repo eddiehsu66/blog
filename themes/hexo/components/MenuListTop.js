@@ -24,6 +24,13 @@ export const MenuListTop = props => {
     },
     {
       id: 3,
+      icon: 'fas fas fa-star',
+      name: locale.NAV.SNAPSHOT,
+      href: '/article/snapshot',
+      show: siteConfig('HEXO_MENU_SNAPSHOT',null,CONFIG)
+    },
+    {
+      id: 4,
       icon: 'fas fa-archive',
       name: locale.NAV.ARCHIVE,
       href: '/archive',
